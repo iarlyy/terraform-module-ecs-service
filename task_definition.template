@@ -1,0 +1,32 @@
+[
+  {
+    "name": "app",
+    "image": "nginx:alpine",
+    "cpu": 0,
+    "memoryReservation": 16,
+    "links": [],
+    "portMappings": [
+      {
+        "containerPort": 80,
+        "protocol": "tcp"
+      }
+    ],
+    "essential": true,
+    "environment": [
+      {
+        "name": "cluster_name",
+        "value": "${ecs_cluster_name}"
+      }
+    ],
+    "mountPoints": [],
+    "volumesFrom": [],
+    "logConfiguration": {
+      "logDriver": "json-file",
+      "options": {
+        "env": "cluster_name",
+        "max-file": "1",
+        "max-size": "10m"
+      }
+    }
+  }
+]
